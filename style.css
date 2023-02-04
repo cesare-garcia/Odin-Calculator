@@ -8,21 +8,25 @@ body {
     align-self: center;
     height: 600px;
     width: 500px;
+    background-color: navy;
 }
 
 .display-container {
-    height: 200px;
-    width: 400px;
+    height: 100px;
+    width: 465px;
     display: flex;
+    background-color: white;
+    margin: 15px 15px 15px 15px;
 }
 
 .screen {
     height: 100px;
-    width: 200px;
+    width: 450px;
 }
 
 .button-area {
     display: flex;
+    gap: 15px;
 }
 
 .digit-container {

@@ -21,12 +21,14 @@ digit_buttons.forEach(digit_button => {
     })
 })
 
+
+// this below is the source of my trouble. May need to rework. 
+
 operator_buttons.forEach(operator_button => {
     operator_button.addEventListener('click', (e) => {
         
         if ( selectedInputs.length > 2 ) {
             console.log(operate(selectedInputs[0], selectedInputs[1], selectedInputs[2]));
-            // console.log('test');
         } else {
             operator = e.target.textContent;
             if ( selectedInputs[0] == undefined ) {
@@ -45,7 +47,10 @@ equals_button.addEventListener('click', (e) => {
     }
     
     let result = operate(selectedInputs[0], selectedInputs[1], selectedInputs[2]);
-    console.log(result);
+    screen.textContent = result;
+
+    // Need to reset arrays and variables while storing result as the new first index of the selectedInputs array. How to do this?
+
 })
 
 clear_button.addEventListener('click', (e) => {

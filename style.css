@@ -1,0 +1,58 @@
+
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.calculator-body {
+    align-self: center;
+    height: 600px;
+    width: 500px;
+}
+
+.display-container {
+    height: 200px;
+    width: 400px;
+    display: flex;
+}
+
+.screen {
+    height: 100px;
+    width: 200px;
+}
+
+.button-area {
+    display: flex;
+}
+
+.digit-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.digit-row {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.digit {
+    background-color: black;
+    color: white;
+}
+
+.operation-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.operation {
+    background-color: crimson;
+    color: white;
+    height: 50px;
+    width: 100px;
+}
+
+.clear {
+    background-color: green;
+    color: white;
+}

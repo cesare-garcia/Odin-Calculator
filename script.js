@@ -62,7 +62,7 @@ equals_button.addEventListener('click', (e) => {
 });
 
 clear_button.addEventListener('click', (e) => {
-    screen.textContent = '';
+    screen.textContent = 0;
     firstNum = '';
     operator = '';
     secondNum = '';
@@ -70,7 +70,9 @@ clear_button.addEventListener('click', (e) => {
 });
 
 function operate(firstNum, operator, secondNum) {
-    if ( operator === '+' ) {
+    if ( secondNum == '' ) {
+        return 'ERROR, Press Clear';
+    } else if ( operator === '+' ) {
         let displaySum = addNumbers(firstNum, secondNum);
         return displaySum;
     } else if ( operator === '-' ) {

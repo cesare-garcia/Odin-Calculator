@@ -23,6 +23,8 @@ body {
 .screen {
     background-color: lightgrey;
     color: black;
+    width: 180px;
+    height: 18.5px;
 }
 
 .button-row {

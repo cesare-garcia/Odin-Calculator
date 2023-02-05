@@ -105,6 +105,10 @@ function multiplyNumbers(firstNum, secondNum) {
 }
 
 function divideNumbers(firstNum, secondNum) {
-    let quotient = parseInt(firstNum) / parseInt(secondNum);
-    return quotient;
+    if ( secondNum == 0 ) {
+        return `You can't divide by 0`;
+    } else {
+        let quotient = parseInt(firstNum) / parseInt(secondNum);
+        return quotient;
+    }
 }

@@ -24,15 +24,24 @@ digit_buttons.forEach(digit_button => {
 operator_buttons.forEach(operator_button => {
     operator_button.addEventListener('click', (e) => {
         
-        operator = e.target.textContent;
-
-        if ( selectedInputs[0] != undefined && selectedInputs[1] == undefined ) {
+        if ( selectedInputs.length == 2 ) {
+            selectedInputs.push(secondNum);
+            let result = operate(selectedInputs[0], selectedInputs[1], selectedInputs[2]);
+            screen.textContent = result;
+            firstNum = result;
+            operator = e.target.textContent;
+            secondNum = '';
+            selectedInputs = [];
+            selectedInputs.push(result);
             selectedInputs.push(operator);
-            // console.log(selectedInputs);
-        } else if ( selectedInputs[0] == undefined && selectedInputs[1] == undefined ) {
-            selectedInputs.push(firstNum);
-            selectedInputs.push(operator);
-            // console.log(selectedInputs);
+        } else {
+            operator = e.target.textContent;
+            if ( selectedInputs[0] != undefined && selectedInputs[1] == undefined ) {
+                selectedInputs.push(operator);
+            } else if ( selectedInputs[0] == undefined && selectedInputs[1] == undefined ) {
+                selectedInputs.push(firstNum);
+                selectedInputs.push(operator);
+            }
         }
     })
 })
@@ -50,7 +59,6 @@ equals_button.addEventListener('click', (e) => {
     secondNum = '';
     selectedInputs = [];
     selectedInputs.push(result);
-    // console.log(selectedInputs);
 });
 
 clear_button.addEventListener('click', (e) => {

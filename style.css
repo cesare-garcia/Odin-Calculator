@@ -17,22 +17,69 @@ body {
 .display-container {
     color: white;
     height: 60px;
-    margin: 10px 10px 10px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .screen {
     background-color: lightgrey;
     color: black;
-    width: 180px;
-    height: 18.5px;
+    width: 165px;
+    height: 50px;
+    align-self: center;
+    text-align: right;
+    font-size: large
+}
+
+.button-container {
+    margin-bottom: 10px;
 }
 
 .button-row {
     display: flex;
-    border: solid;
-    border-color: red;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5px;
+    margin-bottom: 3.5px;
 }
 
-.bottom-container {
-    display: flex;
+.digit,
+.decimal {
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    border: none;
+    outline: none;
+}
+
+.operator {
+    height: 40px;
+    width: 40px;
+    background-color: cornflowerblue;
+    border: none;
+    outline: none;
+    color: aliceblue;
+    border-radius: 100%;
+}
+
+#zero {
+    height: 40px;
+    width: 82.5px;
+    border-radius: 50%;
+}
+
+.clear,
+.delete,
+.negative,
+.equal {
+    height: 40px;
+    width: 40px;
+    background-color: brown;
+    border: none;
+    outline: none;
+    color: aliceblue;
+    border-radius: 100%;
 }

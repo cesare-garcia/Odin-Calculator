@@ -21,7 +21,6 @@ digit_buttons.forEach(digit_button => {
     })
 })
 
-
 // this below is the source of my trouble. May need to rework. 
 
 operator_buttons.forEach(operator_button => {
@@ -48,13 +47,16 @@ equals_button.addEventListener('click', (e) => {
     
     let result = operate(selectedInputs[0], selectedInputs[1], selectedInputs[2]);
     screen.textContent = result;
-
-    // Need to reset arrays and variables while storing result as the new first index of the selectedInputs array. How to do this?
-
-})
+    firstNum = result;
+    operator = '';
+    secondNum = '';
+    selectedInputs = [];
+    selectedInputs.push(result);
+    // console.log(selectedInputs);
+});
 
 clear_button.addEventListener('click', (e) => {
-    screen.textContent = ''; //need a solution that won't make the grey screen disappear.
+    screen.textContent = '';
     firstNum = '';
     operator = '';
     secondNum = '';

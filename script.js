@@ -21,20 +21,18 @@ digit_buttons.forEach(digit_button => {
     })
 })
 
-// this below is the source of my trouble. May need to rework. 
-
 operator_buttons.forEach(operator_button => {
     operator_button.addEventListener('click', (e) => {
         
-        if ( selectedInputs.length > 2 ) {
-            console.log(operate(selectedInputs[0], selectedInputs[1], selectedInputs[2]));
-        } else {
-            operator = e.target.textContent;
-            if ( selectedInputs[0] == undefined ) {
-                selectedInputs.push(firstNum);
-                selectedInputs.push(operator);
-                console.log(selectedInputs);
-            }
+        operator = e.target.textContent;
+
+        if ( selectedInputs[0] != undefined && selectedInputs[1] == undefined ) {
+            selectedInputs.push(operator);
+            // console.log(selectedInputs);
+        } else if ( selectedInputs[0] == undefined && selectedInputs[1] == undefined ) {
+            selectedInputs.push(firstNum);
+            selectedInputs.push(operator);
+            // console.log(selectedInputs);
         }
     })
 })

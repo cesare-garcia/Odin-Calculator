@@ -31,7 +31,7 @@ body {
     height: 50px;
     align-self: center;
     text-align: right;
-    font-size: large
+    padding-right: 5px;
 }
 
 .button-container {

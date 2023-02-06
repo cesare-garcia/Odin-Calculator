@@ -4,6 +4,17 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.non-title {
+    display: flex;
+    gap: 25px;
+}
+
+.keyboard-instructions {
+    flex-shrink: 0;
 }
 
 .calculator-body {
@@ -12,6 +23,7 @@ body {
     flex-direction: column;
     height: 300px;
     width: 200px;
+    flex-shrink: 0;
 }
 
 .display-container {

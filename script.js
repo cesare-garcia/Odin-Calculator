@@ -5,12 +5,31 @@ let equals_button = document.querySelector('.equal');
 let screen = document.querySelector('.screen');
 let negative = document.querySelector('.negative');
 let decimal_button = document.querySelector('.decimal');
-let backspace_button = document.querySelector('.delete')
+let backspace_button = document.querySelector('.delete');
 
 let selectedInputs = [];
 let firstNum = '';
 let operator = '';
 let secondNum = '';
+
+window.addEventListener('keydown', (e) => {
+    console.log(e.key);
+    if ( selectedInputs[0] == undefined ) {
+        if ( firstNum.length < 20 ) {
+            firstNum += e.key;
+            screen.textContent = `${firstNum}`;
+        } else {
+            screen.textContent = `ERROR, string too long.`
+        }
+    } else if ( selectedInputs[0] != undefined && selectedInputs[1] != undefined) {
+        if ( secondNum.length < 20 ) {
+            secondNum += e.key;
+            screen.textContent = `${secondNum}`;
+        } else {
+            screen.textContent = `ERROR, string too long.`
+        }
+    }
+});
 
 // Eventually add scientific notation to account for extremely long numbers
 

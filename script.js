@@ -2,7 +2,8 @@ let digit_buttons = Array.from(document.querySelectorAll('.digit'));
 let operator_buttons = Array.from(document.querySelectorAll('.operator'));
 let clear_button = document.querySelector('.clear');
 let equals_button = document.querySelector('.equal');
-let screen = document.querySelector('.screen');;
+let screen = document.querySelector('.screen');
+let negative = document.querySelector('.negative');
 
 let selectedInputs = [];
 let firstNum = '';
@@ -68,6 +69,25 @@ clear_button.addEventListener('click', (e) => {
     secondNum = '';
     selectedInputs = [];
 });
+
+negative.addEventListener('click', (e) => {
+    console.log(e.target);
+    if ( selectedInputs[0] != undefined && selectedInputs[1] == undefined ) {
+        selectedInputs.shift();
+        firstNum *= -1;
+        selectedInputs.push(firstNum);
+        screen.textContent = firstNum;
+    } else if ( selectedInputs[0] == undefined ) {
+        parseInt(firstNum);
+        firstNum *= -1;
+        screen.textContent = firstNum;
+    } else if ( selectedInputs[0] != undefined && selectedInputs[1] != undefined ) {
+        parseInt(secondNum);
+        secondNum *= -1;
+        console.log(secondNum);
+        screen.textContent = secondNum;
+    }
+})
 
 function operate(firstNum, operator, secondNum) {
     if ( secondNum == '' ) {

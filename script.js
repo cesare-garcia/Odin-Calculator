@@ -62,18 +62,22 @@ operator_buttons.forEach(operator_button => {
 
 equals_button.addEventListener('click', (e) => {
     
-    if ( selectedInputs[2] == undefined ) {
-        selectedInputs.push(secondNum);
+    if ( selectedInputs[0] == undefined && firstNum == '' ) {
+        resetCalc();
+    } else {
+        if ( selectedInputs[2] == undefined ) {
+            selectedInputs.push(secondNum);
+        }
+        
+        let result = operate(selectedInputs[0], selectedInputs[1], selectedInputs[2]);
+        screen.textContent = result;
+        firstNum = result;
+        operator = '';
+        secondNum = '';
+        selectedInputs = [];
+        selectedInputs.push(result);
+        decimal_button.disabled = true;
     }
-    
-    let result = operate(selectedInputs[0], selectedInputs[1], selectedInputs[2]);
-    screen.textContent = result;
-    firstNum = result;
-    operator = '';
-    secondNum = '';
-    selectedInputs = [];
-    selectedInputs.push(result);
-    decimal_button.disabled = true;
 });
 
 clear_button.addEventListener('click', (e) => {

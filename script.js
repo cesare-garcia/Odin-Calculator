@@ -28,6 +28,7 @@ operator_buttons.forEach(operator_button => {
     operator_button.addEventListener('click', (e) => {
         
         if ( selectedInputs.length == 2 ) {
+            decimal_button.disabled = false;
             selectedInputs.push(secondNum);
             let result = operate(selectedInputs[0], selectedInputs[1], selectedInputs[2]);
             screen.textContent = result;
@@ -41,9 +42,11 @@ operator_buttons.forEach(operator_button => {
             operator = e.target.textContent;
             if ( selectedInputs[0] != undefined && selectedInputs[1] == undefined ) {
                 selectedInputs.push(operator);
+                decimal_button.disabled = false;
             } else if ( selectedInputs[0] == undefined && selectedInputs[1] == undefined ) {
                 selectedInputs.push(firstNum);
                 selectedInputs.push(operator);
+                decimal_button.disabled = false;
             }
         }
     })
@@ -62,6 +65,7 @@ equals_button.addEventListener('click', (e) => {
     secondNum = '';
     selectedInputs = [];
     selectedInputs.push(result);
+    decimal_button.disabled = true;
 });
 
 clear_button.addEventListener('click', (e) => {

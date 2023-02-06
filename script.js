@@ -4,6 +4,8 @@ let clear_button = document.querySelector('.clear');
 let equals_button = document.querySelector('.equal');
 let screen = document.querySelector('.screen');
 let negative = document.querySelector('.negative');
+let decimal_button = document.querySelector('.decimal');
+let backspace_button = document.querySelector('.delete')
 
 let selectedInputs = [];
 let firstNum = '';
@@ -63,11 +65,7 @@ equals_button.addEventListener('click', (e) => {
 });
 
 clear_button.addEventListener('click', (e) => {
-    screen.textContent = 0;
-    firstNum = '';
-    operator = '';
-    secondNum = '';
-    selectedInputs = [];
+    resetCalc();
 });
 
 negative.addEventListener('click', (e) => {
@@ -88,6 +86,19 @@ negative.addEventListener('click', (e) => {
         screen.textContent = secondNum;
     }
 })
+
+backspace_button.addEventListener('click', (e) => {
+    
+    if ( selectedInputs[0] == undefined ) {
+        resetCalc();
+    } else if ( selectedInputs[0] != undefined && selectedInputs[1] != undefined ) {
+        selectedInputs.pop();
+        secondNum = '';
+        screen.textContent = selectedInputs[0];
+    } else if ( selectedInputs[0] != undefined ) {
+        resetCalc();
+    }
+});
 
 function operate(firstNum, operator, secondNum) {
     if ( secondNum == '' ) {
@@ -131,4 +142,12 @@ function divideNumbers(firstNum, secondNum) {
         let quotient = parseInt(firstNum) / parseInt(secondNum);
         return quotient;
     }
+}
+
+function resetCalc() {
+    screen.textContent = 0;
+    firstNum = '';
+    operator = '';
+    secondNum = '';
+    selectedInputs = [];
 }

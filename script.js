@@ -88,66 +88,49 @@ window.addEventListener('keydown', (e) => {
                 screen.textContent = `ERROR, string too long.`
             }
         }
-    } else if ( ) {
-
+    } else if ( e.key == 'Backspace') {
+        if ( selectedInputs[0] == undefined ) {
+            resetCalc();
+            decimal_button.disabled = false;
+        } else if ( selectedInputs[0] != undefined && selectedInputs[1] != undefined ) {
+            selectedInputs.pop();
+            secondNum = '';
+            screen.textContent = selectedInputs[0];
+        } else if ( selectedInputs[0] != undefined ) {
+            resetCalc();
+            decimal_button.disabled = false;
+        }
+    } else if ( e.key == '.' ) {
+        if ( selectedInputs[0] == undefined ) {
+            firstNum += '.';
+            screen.textContent = firstNum;
+            decimal_button.disabled = true;
+        } else if ( selectedInputs[0] != undefined && selectedInputs[1] != undefined ) {
+            secondNum += '.';
+            screen.textContent = secondNum;
+            decimal_button.disabled = true;
+        }
+    } else if ( e.key == '_' ) {
+        if ( selectedInputs[0] != undefined && selectedInputs[1] == undefined ) {
+            selectedInputs.shift();
+            firstNum *= -1;
+            selectedInputs.push(firstNum);
+            screen.textContent = firstNum;
+        } else if ( selectedInputs[0] == undefined ) {
+            parseInt(firstNum);
+            firstNum *= -1;
+            screen.textContent = firstNum;
+        } else if ( selectedInputs[0] != undefined && selectedInputs[1] != undefined ) {
+            parseInt(secondNum);
+            secondNum *= -1;
+            console.log(secondNum);
+            screen.textContent = secondNum;
+        }
+    } else if ( e.key == 'z' ) {
+        resetCalc();
+        decimal_button.disabled = false;
     }
-
-
 });
-
-// backspace
-
-
-// if ( selectedInputs[0] == undefined ) {
-//     resetCalc();
-//     decimal_button.disabled = false;
-// } else if ( selectedInputs[0] != undefined && selectedInputs[1] != undefined ) {
-//     selectedInputs.pop();
-//     secondNum = '';
-//     screen.textContent = selectedInputs[0];
-// } else if ( selectedInputs[0] != undefined ) {
-//     resetCalc();
-//     decimal_button.disabled = false;
-// }
-
-
-// clear
-
-// resetCalc();
-// decimal_button.disabled = false;
-
-
-// negative
-
-// if ( selectedInputs[0] != undefined && selectedInputs[1] == undefined ) {
-//     selectedInputs.shift();
-//     firstNum *= -1;
-//     selectedInputs.push(firstNum);
-//     screen.textContent = firstNum;
-// } else if ( selectedInputs[0] == undefined ) {
-//     parseInt(firstNum);
-//     firstNum *= -1;
-//     screen.textContent = firstNum;
-// } else if ( selectedInputs[0] != undefined && selectedInputs[1] != undefined ) {
-//     parseInt(secondNum);
-//     secondNum *= -1;
-//     console.log(secondNum);
-//     screen.textContent = secondNum;
-// }
-
-
-// decimal
-
-// if ( selectedInputs[0] == undefined ) {
-//     firstNum += '.';
-//     screen.textContent = firstNum;
-//     decimal_button.disabled = true;
-// } else if ( selectedInputs[0] != undefined && selectedInputs[1] != undefined ) {
-//     secondNum += '.';
-//     screen.textContent = secondNum;
-//     decimal_button.disabled = true;
-// }
-
 
 // Mouse functionality start
 // Eventually add scientific notation to account for extremely long numbers

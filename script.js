@@ -66,6 +66,7 @@ equals_button.addEventListener('click', (e) => {
 
 clear_button.addEventListener('click', (e) => {
     resetCalc();
+    decimal_button.disabled = false;
 });
 
 negative.addEventListener('click', (e) => {
@@ -91,13 +92,29 @@ backspace_button.addEventListener('click', (e) => {
     
     if ( selectedInputs[0] == undefined ) {
         resetCalc();
+        decimal_button.disabled = false;
     } else if ( selectedInputs[0] != undefined && selectedInputs[1] != undefined ) {
         selectedInputs.pop();
         secondNum = '';
         screen.textContent = selectedInputs[0];
     } else if ( selectedInputs[0] != undefined ) {
         resetCalc();
+        decimal_button.disabled = false;
     }
+});
+
+decimal_button.addEventListener('click', (e) => {
+    
+    if ( selectedInputs[0] == undefined ) {
+        firstNum += '.';
+        screen.textContent = firstNum;
+        decimal_button.disabled = true;
+    } else if ( selectedInputs[0] != undefined && selectedInputs[1] != undefined ) {
+        secondNum += '.';
+        screen.textContent = secondNum;
+        decimal_button.disabled = true;
+    }
+
 });
 
 function operate(firstNum, operator, secondNum) {

@@ -27,7 +27,15 @@ digit_buttons.forEach(digit_button => {
 operator_buttons.forEach(operator_button => {
     operator_button.addEventListener('click', (e) => {
         
-        if ( selectedInputs.length == 2 ) {
+        if ( firstNum == '' && e.target.textContent == '+' ) {
+            resetCalc();
+        } else if ( firstNum == '' && e.target.textContent == '-' ) {
+            resetCalc();
+        } else if ( firstNum == '' && e.target.textContent == '*' ) {
+            resetCalc();
+        } else if ( firstNum == '' && e.target.textContent == '/' ) {
+            resetCalc();
+        } else if ( selectedInputs.length == 2 ) {
             decimal_button.disabled = false;
             selectedInputs.push(secondNum);
             let result = operate(selectedInputs[0], selectedInputs[1], selectedInputs[2]);
@@ -137,7 +145,7 @@ function operate(firstNum, operator, secondNum) {
         let displayQuotient = divideNumbers(firstNum, secondNum);
         return displayQuotient;
     } else {
-        return 'ERROR';
+        return 'ERROR, press Clear';
     }
 }
 

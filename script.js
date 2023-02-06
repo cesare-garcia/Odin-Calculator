@@ -74,18 +74,21 @@ window.addEventListener('keydown', (e) => {
             }
             
             let result = operate(selectedInputs[0], selectedInputs[1], selectedInputs[2]);
-            let resultString = result.toString();
+            
+            if ( result != undefined ) {
+                let resultString = result.toString();
     
-            if ( resultString.length < 20 ) {
-                screen.textContent = result;
-                firstNum = result;
-                operator = '';
-                secondNum = '';
-                selectedInputs = [];
-                selectedInputs.push(result);
-                decimal_button.disabled = true;
-            } else {
-                screen.textContent = `ERROR, string too long.`
+                if ( resultString.length < 20 ) {
+                    screen.textContent = result;
+                    firstNum = result;
+                    operator = '';
+                    secondNum = '';
+                    selectedInputs = [];
+                    selectedInputs.push(result);
+                    decimal_button.disabled = true;
+                } else {
+                    screen.textContent = `ERROR, string too long.`
+                }
             }
         }
     } else if ( e.key == 'Backspace') {
@@ -204,18 +207,21 @@ equals_button.addEventListener('click', (e) => {
         }
         
         let result = operate(selectedInputs[0], selectedInputs[1], selectedInputs[2]);
-        let resultString = result.toString();
+        
+        if (result != undefined ) {
+            let resultString = result.toString();
 
-        if ( resultString.length < 20 ) {
-            screen.textContent = result;
-            firstNum = result;
-            operator = '';
-            secondNum = '';
-            selectedInputs = [];
-            selectedInputs.push(result);
-            decimal_button.disabled = true;
-        } else {
-            screen.textContent = `ERROR, string too long.`
+            if ( resultString.length < 20 ) {
+                screen.textContent = result;
+                firstNum = result;
+                operator = '';
+                secondNum = '';
+                selectedInputs = [];
+                selectedInputs.push(result);
+                decimal_button.disabled = true;
+            } else {
+                screen.textContent = `ERROR, string too long.`
+            }
         }
     }
 });
@@ -224,6 +230,8 @@ clear_button.addEventListener('click', (e) => {
     resetCalc();
     decimal_button.disabled = false;
 });
+
+// eventually may need to figure out better way to add negative sign.
 
 negative.addEventListener('click', (e) => {
     if ( selectedInputs[0] != undefined && selectedInputs[1] == undefined ) {
@@ -238,7 +246,6 @@ negative.addEventListener('click', (e) => {
     } else if ( selectedInputs[0] != undefined && selectedInputs[1] != undefined ) {
         parseInt(secondNum);
         secondNum *= -1;
-        console.log(secondNum);
         screen.textContent = secondNum;
     }
 });
@@ -310,7 +317,7 @@ function multiplyNumbers(firstNum, secondNum) {
 
 function divideNumbers(firstNum, secondNum) {
     if ( secondNum == 0 ) {
-        return `You can't divide by 0`;
+        screen.textContent = `You can't divide by 0`;  
     } else {
         let quotient = parseFloat(firstNum) / parseFloat(secondNum);
         return quotient;

@@ -21,8 +21,8 @@ digit_buttons.forEach(digit_button => {
             secondNum += e.target.textContent;
             screen.textContent = `${secondNum}`;
         }
-    })
-})
+    });
+});
 
 operator_buttons.forEach(operator_button => {
     operator_button.addEventListener('click', (e) => {
@@ -57,8 +57,8 @@ operator_buttons.forEach(operator_button => {
                 decimal_button.disabled = false;
             }
         }
-    })
-})
+    });
+});
 
 equals_button.addEventListener('click', (e) => {
     
@@ -102,7 +102,7 @@ negative.addEventListener('click', (e) => {
         console.log(secondNum);
         screen.textContent = secondNum;
     }
-})
+});
 
 backspace_button.addEventListener('click', (e) => {
     
@@ -153,18 +153,20 @@ function operate(firstNum, operator, secondNum) {
     }
 }
 
+// May need to eventually create some filtering method by which a number is shortened to X decimal places if it's too long.
+
 function addNumbers(firstNum, secondNum) {
-    let sum = parseInt(firstNum) + parseInt(secondNum);
+    let sum = parseFloat(firstNum) + parseFloat(secondNum);
     return sum;
 }
 
 function subtractNumbers(firstNum, secondNum) {
-    let difference = parseInt(firstNum) - parseInt(secondNum);
+    let difference = parseFloat(firstNum) - parseFloat(secondNum);
     return difference;
 }
 
 function multiplyNumbers(firstNum, secondNum) {
-    let product = parseInt(firstNum) * parseInt(secondNum);
+    let product = parseFloat(firstNum) * parseFloat(secondNum);
     return product;
 }
 
@@ -172,7 +174,7 @@ function divideNumbers(firstNum, secondNum) {
     if ( secondNum == 0 ) {
         return `You can't divide by 0`;
     } else {
-        let quotient = parseInt(firstNum) / parseInt(secondNum);
+        let quotient = parseFloat(firstNum) / parseFloat(secondNum);
         return quotient;
     }
 }

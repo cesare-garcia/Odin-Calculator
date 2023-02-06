@@ -17,7 +17,7 @@ digit_buttons.forEach(digit_button => {
         if ( selectedInputs[0] == undefined ) {
             firstNum += e.target.textContent;
             screen.textContent = `${firstNum}`;
-        } else {
+        } else if ( selectedInputs[0] != undefined && selectedInputs[1] != undefined) {
             secondNum += e.target.textContent;
             screen.textContent = `${secondNum}`;
         }

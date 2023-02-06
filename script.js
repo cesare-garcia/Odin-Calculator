@@ -12,14 +12,25 @@ let firstNum = '';
 let operator = '';
 let secondNum = '';
 
+// Eventually add scientific notation to account for extremely long numbers
+
 digit_buttons.forEach(digit_button => {
     digit_button.addEventListener('click', (e) => {
+        
         if ( selectedInputs[0] == undefined ) {
-            firstNum += e.target.textContent;
-            screen.textContent = `${firstNum}`;
+            if ( firstNum.length < 20 ) {
+                firstNum += e.target.textContent;
+                screen.textContent = `${firstNum}`;
+            } else {
+                screen.textContent = `ERROR, string too long.`
+            }
         } else if ( selectedInputs[0] != undefined && selectedInputs[1] != undefined) {
-            secondNum += e.target.textContent;
-            screen.textContent = `${secondNum}`;
+            if ( secondNum.length < 20 ) {
+                secondNum += e.target.textContent;
+                screen.textContent = `${secondNum}`;
+            } else {
+                screen.textContent = `ERROR, string too long.`
+            }
         }
     });
 });
@@ -60,6 +71,8 @@ operator_buttons.forEach(operator_button => {
     });
 });
 
+// Eventually add scientific notation to account for extremely long numbers
+
 equals_button.addEventListener('click', (e) => {
     
     if ( selectedInputs[0] == undefined && firstNum == '' ) {
@@ -70,13 +83,19 @@ equals_button.addEventListener('click', (e) => {
         }
         
         let result = operate(selectedInputs[0], selectedInputs[1], selectedInputs[2]);
-        screen.textContent = result;
-        firstNum = result;
-        operator = '';
-        secondNum = '';
-        selectedInputs = [];
-        selectedInputs.push(result);
-        decimal_button.disabled = true;
+        let resultString = result.toString();
+
+        if ( resultString.length < 20 ) {
+            screen.textContent = result;
+            firstNum = result;
+            operator = '';
+            secondNum = '';
+            selectedInputs = [];
+            selectedInputs.push(result);
+            decimal_button.disabled = true;
+        } else {
+            screen.textContent = `ERROR, string too long.`
+        }
     }
 });
 
